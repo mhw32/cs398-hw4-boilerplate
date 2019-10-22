@@ -12,8 +12,8 @@ import torch.optim as optim
 import torch.utils.data as data
 import torch.nn.functional as F
 
-from trainer.utils import AverageMeter, save_checkpoint, NUM_LABELS
-from trainer.datasets import RubricDataset, TransferDataset
+from .utils import AverageMeter, save_checkpoint, NUM_LABELS
+from .datasets import RubricDataset, TransferDataset
 
 
 def train_pipeline(model_class, train_data_path, val_data_path, test_data_path, config):

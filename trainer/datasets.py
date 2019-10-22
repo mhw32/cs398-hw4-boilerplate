@@ -8,7 +8,7 @@ from tqdm import tqdm
 from collections import defaultdict
 from torch.utils.data.dataset import Dataset
 
-from trainer.utils import (
+from .utils import (
     PAD_TOKEN,
     UNK_TOKEN,
     EOS_TOKEN,
@@ -44,8 +44,8 @@ class RubricDataset(Dataset):
         with open(self.data_path, 'rb') as fp:
             data = pickle.load(fp)
         
-        programs = data['programs']
-        labels   = data['labels']
+        programs = data['program']
+        labels   = data['label']
         
         if self.vocab is None:
             self.vocab = self.create_vocab(programs)
