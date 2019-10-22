@@ -1,0 +1,6 @@
+**__pycache__
+**/*.pyc
+codeDotOrg/__pycache__
+**train_data.pickle
+**val_data.pickle
+**test_data.pickle

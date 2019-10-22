@@ -25,17 +25,19 @@ def flatten_ast(ast):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('raw_data_path', type=str, 
-                        help='pickle file of [(pseudoCode, labels), (pseudoCode, labels), ...]')
+    parser.add_argument(
+        'raw_data_path', type=str, 
+        help='pickle file of {"program": [...], "label": [[...],[...],...]}',
+    )
     args = parser.parse_args()
 
     with open(args.raw_data_path, 'rb') as fp:
         data = pickle.load(fp)
 
-    num = len(data)
+    num = len(data['program'])
     programs, labels = [], []
     for i in range(num):
-        code, label = data[i]
+        code, label = data['program'][i], data['label'][i]
         ast = pseudoCodeToTree.parse(code)
         code_list = flatten_ast(ast)
         code_str = ' '.join(code_list)
