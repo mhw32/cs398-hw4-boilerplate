@@ -32,7 +32,7 @@ class RubricDataset(Dataset):
                     minimum number of times for a token to
                     be included in the vocabulary.
     """
-    def __init__(self, data_path, label_dim, vocab=None, max_seq_len=50, min_occ=3):
+    def __init__(self, data_path, label_dim, vocab=None, max_seq_len=50, min_occ=1):
         super(RubricDataset, self).__init__()
 
         self.vocab = vocab
@@ -117,9 +117,9 @@ class RubricDataset(Dataset):
         return token_seq, token_len, label
 
 
-class ValidationDataset(RubricDataset):
+class TransferDataset(RubricDataset):
     """Copy of RubricDataset but used only for validating on real student data"""
-    def __init__(self, data_path, label_dim, vocab, max_seq_len=50, min_occ=3):
+    def __init__(self, data_path, label_dim, vocab, max_seq_len=50, min_occ=1):
         assert vocab is not None
-        super(ValidationDataset, self).__init__(data_path, label_dim, vocab, 
-                                                max_seq_len=max_seq_len, min_occ=min_occ)
+        super(TransferDataset, self).__init__(data_path, label_dim, vocab, 
+                                              max_seq_len=max_seq_len, min_occ=min_occ)

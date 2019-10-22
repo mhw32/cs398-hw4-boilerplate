@@ -4,6 +4,7 @@ import numpy as np
 from codeDotOrg import pseudoCodeToTree
 from trainer.utils import OPEN_BRACKET, END_BRACKET
 from trainer.utils import train_test_split
+from trainer.utils import LABEL_TO_IX, NUM_LABELS
 from config import DATA_DIR
 
 
@@ -39,7 +40,10 @@ if __name__ == "__main__":
         code_list = flatten_ast(ast)
         code_str = ' '.join(code_list)
         programs.append(code_str)
-        labels.append(label)
+        label_vec = np.zeros(NUM_LABELS)
+        for lab in label:
+            label_vec[LABEL_TO_IX[lab]] = 1
+        labels.append(label_vec)
     programs = np.array(programs)
     labels = np.array(labels)
     

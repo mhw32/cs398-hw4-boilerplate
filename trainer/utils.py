@@ -33,6 +33,7 @@ IX_TO_LABEL = {
     16: 'turn-rightLeftConfusion',
     17: 'move-wrongAmount',
 }
+LABEL_TO_IX = dict([[v,k] for k,v in IX_TO_LABEL.items()])
 NUM_LABELS = len(IX_TO_LABEL)
 
 # these are "special" tokens used often to handle language

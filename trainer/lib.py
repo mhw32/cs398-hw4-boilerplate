@@ -13,7 +13,7 @@ import torch.utils.data as data
 import torch.nn.functional as F
 
 from trainer.utils import AverageMeter, save_checkpoint, NUM_LABELS
-from trainer.datasets import RubricDataset, ValidationDataset
+from trainer.datasets import RubricDataset, TransferDataset
 
 
 def train_pipeline(model_class, train_data_path, val_data_path, test_data_path, config):
@@ -204,8 +204,8 @@ def transfer_pipeline(model_class, checkpoint_path, real_data_path):
     torch.manual_seed(config['seed'])
     np.random.seed(config['seed'])
 
-    real_dataset = RubricDataset(real_data_path, NUM_LABELS, vocab=checkpoint['vocab'], 
-                                 max_seq_len=config['max_seq_len'], min_occ=config['min_occ'])
+    real_dataset = TransferDataset(real_data_path, NUM_LABELS, vocab=checkpoint['vocab'], 
+                                    max_seq_len=config['max_seq_len'], min_occ=config['min_occ'])
     real_loader = data.DataLoader(real_dataset, batch_size=config['batch_size'], shuffle=False)
 
     with torch.no_grad():
