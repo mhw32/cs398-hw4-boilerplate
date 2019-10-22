@@ -81,7 +81,7 @@ def train_pipeline(model_class, train_data_path, val_data_path, test_data_path, 
             label_arr.append(label_npy)
             pred_arr.append(pred_npy)
 
-            pbar.set_description({'Loss': loss_meter.avg, 'Accuracy': acc_meter.avg})
+            pbar.set_postfix({'Loss': loss_meter.avg, 'Accuracy': acc_meter.avg})
             pbar.update()
 
         pbar.close()

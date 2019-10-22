@@ -68,3 +68,22 @@ if __name__ == "__main__":
 
     with open(os.path.join(DATA_DIR, 'test_data.pickle'), 'wb') as fp:
         pickle.dump(test_data, fp)
+
+    # process the real student data
+
+    with open(os.path.join(DATA_DIR, 'real-data-500.pk'), 'rb') as fp:
+        real_data = pickle.load(fp)
+
+    num = len(data['program'])
+    new_labels = []
+    for i in range(num):
+        label = data['label'][i]
+        label_vec = np.zeros(NUM_LABELS)
+        for lab in label:
+            label_vec[LABEL_TO_IX[lab]] = 1
+        new_labels.append(label_vec)
+    new_labels = np.array(new_labels)
+
+    real_data = {'program': data['program'], 'label': new_labels}
+    with open(os.path.join(DATA_DIR, 'transfer.pickle'), 'wb') as fp:
+        pickle.dump(real_data, fp)

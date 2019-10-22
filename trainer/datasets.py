@@ -103,7 +103,7 @@ class RubricDataset(Dataset):
         return seqs, lengths
 
     def process_labels(self, annotations):
-        labels = np.array(annotations)
+        labels = np.array(annotations).astype(np.int)
         labels = torch.from_numpy(labels).float()
         return labels
 

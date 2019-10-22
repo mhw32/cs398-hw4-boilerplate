@@ -4,3 +4,6 @@ codeDotOrg/__pycache__
 **train_data.pickle
 **val_data.pickle
 **test_data.pickle
+**transfer.pickle
+**.npy
+**.pth.tar

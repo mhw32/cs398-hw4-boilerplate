@@ -20,11 +20,8 @@ class FeedbackNN(nn.Module):
     """
     
     def __init__(self, vocab_size, num_labels):
-        raise NotImplementedError
+        super().__init__()
+        # TODO: add modules!
 
-    def forward(self, token_seq, token_length):
-        # `token_seq` is a (batch_size x max_token_length) tensor where 
-        # each element is a number between 0 to |V| - 1. `token_length` is 
-        # a (batch_size) tensor where each element represents the 
-        # non-padded length.
-        raise NotImplementedError
+    def forward(self, seq, length):
+        raise NotImplementedError  #TODO: add more!
