@@ -25,7 +25,21 @@ We assume that you have a raw dataset generated from your grammar, composed of a
 }
 ```
 
-The contents of the pickle file should be a dictionary with 2 keys: `program` and `label`, the former is a list of Pseudoprogram strings; the latter is a list of vectors (each vector is of length 18 in the order of the dictionary above: an index is 1 if that label is present). Put this pickle file into the `data/` sub-directory.
+The contents of the pickle file should be a list of dictionaries, each with two keys `code` and `labels`, the former begin a Pseudoprogram string and the latter begin a list of feedback strings. Put this pickle file into the `data/` sub-directory. For example, 
+
+```
+[
+    {
+        'code': ...,
+        'labels': [..., ...],
+    },
+    {
+        'code': ...,
+        'labels': [..., ...],
+    },
+    ...
+]
+```
 
 ## Helper Modules
 

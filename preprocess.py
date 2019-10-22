@@ -34,10 +34,10 @@ if __name__ == "__main__":
     with open(args.raw_data_path, 'rb') as fp:
         data = pickle.load(fp)
 
-    num = len(data['program'])
+    num = len(data)
     programs, labels = [], []
     for i in range(num):
-        code, label = data['program'][i], data['label'][i]
+        code, label = data[i]['code'], data[i]['labels']
         ast = pseudoCodeToTree.parse(code)
         code_list = flatten_ast(ast)
         code_str = ' '.join(code_list)
